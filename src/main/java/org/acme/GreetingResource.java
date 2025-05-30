@@ -26,14 +26,9 @@ public class GreetingResource {
                 .onItem().transformToUniAndMerge(greeting ->
 
                     // close session on failure
-                    greetingService.saveGreeting(greeting).onFailure().recoverWithUni(() -> closeSession())
+                    greetingService.saveGreeting(greeting).onFailure().recoverWithNull()
                 )
                 .collect().asList();
     }
 
-    private Uni<Greeting> closeSession() {
-        return Panache.getSession()
-                .flatMap(s -> s.close())
-                .map(null);
-    }
 }

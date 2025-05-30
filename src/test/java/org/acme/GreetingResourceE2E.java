@@ -2,6 +2,7 @@ package org.acme;
 
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import static org.hamcrest.Matchers.is;
 @QuarkusTest
 class GreetingResourceE2E {
 
-    @Test
+    @RepeatedTest(100)
     void shouldPersistGreetingsWithCorrectMessage() {
         var goodNight = createGreeting("Good night");
         var heyThere = createGreeting("Hey there");
