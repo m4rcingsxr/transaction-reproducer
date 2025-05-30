@@ -1,0 +1,11 @@
+"%test":
+  quarkus:
+    hibernate-orm:
+      log:
+        format-sql: true
+        sql: true
+        bind-parameters: true
+    datasource:
+      devservices:
+        image-name: postgres:17:4
+        port: 55432
